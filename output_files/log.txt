@@ -1,0 +1,66 @@
+Starting at Fri,13 Jul 2018 21:23:24
+
+User changed the attribute list, here is the new list:
+number of attributes:8
+attribute names:['array', 'array', 'empty', 'func', 'empty', 'unroll_folding', 'unroll_folding', 'unroll_folding']
+attribute values:[['RAM', 'REG', 'EXPAND, array_index=const'], ['RAM', 'REG', 'EXPAND, array_index=const'], ['no_attr'], ['inline', 'goto'], ['no_attr'], ['unroll_times=0', 'unroll_times=all', 'folding=1'], ['unroll_times=0', 'unroll_times=all', 'folding=1'], ['unroll_times=0', 'unroll_times=3', 'unroll_times=all', 'folding=1']]
+
+Start HLS DSE (Phase 1)
+total number of designs = 648
+Population of the pool is 30
+4 rounds will be run using different cost functions
+
+Start HLS DSE round <built-in function round>: Cost Function = 0.33 * area + 0.33 * latency + 0.33 * power
+Generation 1 is ready.
+Generation 2 is ready.
+Generation 3 is ready.
+Generation 4 is ready.
+Generation 5 is ready.
+Generation 6 is ready.
+Generation 7 is ready.
+Generation 8 is ready.
+Generation 9 is ready.
+
+Start HLS DSE round 0: Cost Function = 0.85 * area + 0.075 * latency + 0.075 * power
+Generation 1 is ready.
+Generation 2 is ready.
+Generation 3 is ready.
+Generation 4 is ready.
+Generation 5 is ready.
+Generation 6 is ready.
+Generation 7 is ready.
+Generation 8 is ready.
+Generation 9 is ready.
+Generation 10 is ready.
+
+Start HLS DSE round 1: Cost Function = 0.075 * area + 0.85 * latency + 0.075 * power
+Generation 1 is ready.
+Generation 2 is ready.
+Generation 3 is ready.
+Generation 4 is ready.
+Generation 5 is ready.
+Generation 6 is ready.
+Generation 7 is ready.
+Generation 8 is ready.
+Generation 9 is ready.
+Generation 10 is ready.
+Generation 11 is ready.
+Generation 12 is ready.
+
+Start HLS DSE round 2: Cost Function = 0.075 * area + 0.075 * latency + 0.85 * power
+Generation 1 is ready.
+Generation 2 is ready.
+Generation 3 is ready.
+Generation 4 is ready.
+Generation 5 is ready.
+Generation 6 is ready.
+
+HLS_DSE finished at Fri,13 Jul 2018 22:22:33, Runing time of HLS_DSE is 0 hours 59 minutes 9 seconds
+Number of designs synthesized in HLS_DSE: 441
+
+area vs. latency graph is generated at ./output_files/HLS_DSE_result.png
+
+User changed the attribute list, here is the new list:
+number of attributes:8
+attribute names:['array', 'array', 'empty', 'func', 'empty', 'unroll_folding', 'unroll_folding', 'unroll_folding']
+attribute values:[['RAM', 'REG', 'EXPAND, array_index=const'], ['RAM', 'REG', 'EXPAND, array_index=const'], ['no_attr'], ['inline', 'goto'], ['no_attr'], ['unroll_times=0', 'unroll_times=all', 'folding=1'], ['unroll_times=0', 'unroll_times=all', 'folding=1'], ['unroll_times=0', 'unroll_times=3', 'unroll_times=all', 'folding=1']]

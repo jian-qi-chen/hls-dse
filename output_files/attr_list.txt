@@ -1,0 +1,8 @@
+ATTR0 array [RAM;REG;EXPAND, array_index=const]
+ATTR1 array [RAM;REG;EXPAND, array_index=const]
+ATTR2 empty [no_attr]
+ATTR3 func [inline;goto]
+ATTR4 empty [no_attr]
+ATTR5 unroll_folding [unroll_times=0;unroll_times=all;folding=1]
+ATTR6 unroll_folding [unroll_times=0;unroll_times=all;folding=1]
+ATTR7 unroll_folding [unroll_times=0;unroll_times=3;unroll_times=all;folding=1]
