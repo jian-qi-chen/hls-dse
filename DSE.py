@@ -46,12 +46,14 @@ cost_list = [] #store all known cost. e.g. cost of 0th and 5th design is 10, and
 
 OFFSET = 311 #degrees subtracted firstly from kelvin temperature in image. Used in thermal_map_analyzer.py when generating hashes
 SCALAR = 300 # pixel value(0-255) = (tmep_k - OFFSET) * SCALAR
+cycle_period = 2000 # cycle period for HLS '2000' means 20ns (4000 - 25MHz, 2000 - 50MHz, 1333 - 75MHz, 1000 - 100MHz, 667 - 150MHz, 500 - 200MHz)
 
 def main(argv): 
 	global src_name
 	global array_flg
 	global func_flg
 	global unroll_flg
+	global cycle_period
 	
 	os.system('mkdir -p output_files attr_headers hls')
 	os.system('mkdir -p SOFs')
@@ -62,7 +64,7 @@ def main(argv):
 	start = time.time()
 	
 	try:
-		opts, args = getopt.getopt(argv,"hn",["help"])
+		opts, args = getopt.getopt(argv,"hn:f:",["help"])
 	except getopt.GetoptError:
 		sys.exit(2)
 		
@@ -81,6 +83,8 @@ def main(argv):
 				array_ro_flg = 0
 			else:
 				sys.exit(2)
+		elif opt == "-f":
+			cycle_period = int(arg)   
 		
 	for arg in args:
 		src_name.append(arg)
@@ -407,7 +411,7 @@ def RunHLS(ind_list, new_index):
 		os.chdir('..')
 		return 1
 		
-	ret = os.system('timeout 20m bdltran -c1600 -s -Zresource_fcnt=GENERATE -Zresource_mcnt=GENERATE -Zdup_reset=YES -tcio -EE -lb /eda/cwb/cyber_61/LINUX/packages/cycloneV.BLIB -lfl /eda/cwb/cyber_61/LINUX/packages/cycloneV.FLIB -lic_wait=30 fir.IFF')
+	ret = os.system('timeout 20m bdltran -c'+str(cycle_period)+' -s -Zresource_fcnt=GENERATE -Zresource_mcnt=GENERATE -Zdup_reset=YES -tcio -EE -lb /eda/cwb/cyber_61/LINUX/packages/cycloneV.BLIB -lfl /eda/cwb/cyber_61/LINUX/packages/cycloneV.FLIB -lic_wait=30 fir.IFF')
 	if ret != 0:
 		logfile.write('bdltran error in '+str(new_index)+' th design\n')
 		errorfile.write('\n\n*** bdltran error in '+str(new_index)+' th design ***\n')
