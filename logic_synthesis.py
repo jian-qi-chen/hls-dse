@@ -30,7 +30,7 @@ def main(argv):
 
 def LogicSynthesis(module_name):
     result_file = open(module_name+'_info.csv','w')
-    result_file.write('index,ALMs,latency,Registers,MemoryBits,LABs,RAM blocks,DSP blocks,u0 power(mW),total power(mW)\n')
+    result_file.write('index,ALMs,latency,Registers,MemoryBits,LABs,RAM blocks,DSP blocks,u0 power(mW),total power(mW),max_frequency(MHz)\n')
     result_file.close()
     i = 0
     while os.path.isfile('./hdl/'+module_name+'_E'+str(i)+'.v'):
@@ -51,7 +51,7 @@ def WriteResults(module_name, index):
     fit_file = open('./quartus/output_files/one_module.fit.summary','r')
     fit_summary = fit_file.read()
     fit_file.close()
-    
+
     ALM = re.findall(r'(?<=Logic utilization \(in ALMs\) : )\d*,?\d+',fit_summary)[0].replace(',','')
     register = re.findall(r'(?<=Total registers : )\d*,?\d+',fit_summary)[0].replace(',','')
     memory_bit = re.findall(r'(?<=Total block memory bits : )\d*,?\d+',fit_summary)[0].replace(',','')
@@ -66,8 +66,14 @@ def WriteResults(module_name, index):
     
     u0_power = re.findall( r'\d+\.\d+' , re.findall(r';\s*\|'+module_name+r':u0\s*; \d+\.\d+ mW',power_rpt)[0] )[0]
     total_power = re.findall( r'\d+\.\d+' , re.findall(r'\+\n;\s*\|one_module\s*; \d+\.\d+ mW',power_rpt)[0] )[0]
+
+    sta_file = open('./quartus/output_files/one_module.sta.rpt','r')
+    sta_rpt = sta_file.read()
+    sta_file.close()
     
-    result_file.write(ALM +','+ latency +','+ register +','+ memory_bit +','+ LAB +','+  ram_block +','+ dsp_block +','+ u0_power +','+ total_power +'\n')
+    fmax = re.findall(r'\d+\.\d*(?= MHz)',re.findall(r'; Slow 1100mV 85C Model Fmax Summary.*\n.*\n.*\n.*\n.*\n',sta_rpt)[0])[0].replace(',','')
+    
+    result_file.write(ALM +','+ latency +','+ register +','+ memory_bit +','+ LAB +','+  ram_block +','+ dsp_block +','+ u0_power +','+ total_power +','+fmax+'\n')
     
     result_file.close()
 

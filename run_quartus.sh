@@ -7,6 +7,8 @@ rm -f ./simulation/*
 quartus_map --read_settings_files=on --write_settings_files=off one_module -c one_module
 # Fitter
 quartus_fit --read_settings_files=on --write_settings_files=off one_module -c one_module
+# Timing Analysis
+quartus_sta one_module -c one_module
 # EDA writer
 quartus_eda --read_settings_files=on --write_settings_files=off one_module -c one_module
 # generate .do file for modelsim
