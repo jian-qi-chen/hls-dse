@@ -231,7 +231,7 @@ def add_attributes():
 				content_real = content_real.replace(target_arr, target_arr+add)
 				if content_real.count(target_arr) > 1: #same piece of code in different location, need to be modified manually 
 					print ("Error: multiple location: pragma of attr"+str(attr_count)+" need to be modified in "+file_name)
-					file = open(file_name,'w')
+					file = open('./hls/'+file_name,'w')
 					file.write(content_real)
 					file.close()
 					logfile.write("Error: multiple location: pragma of attr"+str(attr_count)+" need to be modified in "+file_name+'\n')
@@ -260,7 +260,7 @@ def add_attributes():
 				content_real = content_real.replace(target_func, add+target_func)
 				if content_real.count(target_func) > 1:
 					print( "Error: multiple location: pragma of attr"+str(attr_count)+" need to be modified in "+file_name)
-					file = open(file_name,'w')
+					file = open('./hls/'+file_name,'w')
 					file.write(content_real)
 					file.close()
 					logfile.write("Error: multiple location: pragma of attr"+str(attr_count)+" need to be modified in "+file_name+'\n')
@@ -292,7 +292,7 @@ def add_attributes():
 				content_real = content_real.replace(target_unroll, add+target_unroll)
 				if content_real.count(target_unroll) > 1:
 					print ("Error: multiple location: pragma of attr"+str(attr_count)+" need to be modified in "+file_name)
-					file = open(file_name,'w')
+					file = open('./hls/'+file_name,'w')
 					file.write(content_real)
 					file.close()
 					logfile.write("Error: multiple location: pragma of attr"+str(attr_count)+" need to be modified in "+file_name+'\n')
